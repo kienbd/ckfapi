@@ -4,12 +4,13 @@ module Ckfapi
     def get_request url,args={}
       begin
         uri = URI.parse(url)
-        unless args.empty?
-          uri.query = URI.encode_www_form( args )
-          resp = Net::HTTP.get_response(uri)
-        end
+        #unless args.empty?
+        #  uri.query = URI.encode_www_form( args )
+        #  resp = Net::HTTP.get_response(uri)
+        #end
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri, {'Content-Type' =>'application/json'})
+        req.body = args.to_json
         resp = http.request(req)
 
       rescue => e

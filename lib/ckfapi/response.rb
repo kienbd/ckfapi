@@ -9,7 +9,7 @@ module Ckfapi
       @error = {}
       @body = JSON.parse(@raw_response.body) rescue {}
       if @body.empty?
-        @error["message"] =  @raw_response.body
+        @error["message"] =  @raw_response.body rescue @raw_response
       else
         @body.each do |k,v|
           self[k] = v
