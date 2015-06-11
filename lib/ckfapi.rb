@@ -16,6 +16,7 @@ require 'ckfapi/response'
 require "ckfapi/api"
 require "ckfapi/api/user"
 require "ckfapi/api/sale"
+require "ckfapi/api/sale_menu_item"
 
 
 module Ckfapi
