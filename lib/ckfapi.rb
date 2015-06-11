@@ -17,6 +17,10 @@ require "ckfapi/api"
 require "ckfapi/api/user"
 require "ckfapi/api/sale"
 require "ckfapi/api/sale_menu_item"
+require "ckfapi/api/category"
+require "ckfapi/api/menu_item"
+require "ckfapi/api/item_menu_item"
+require "ckfapi/api/item"
 
 
 module Ckfapi
