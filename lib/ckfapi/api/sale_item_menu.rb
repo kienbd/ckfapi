@@ -2,34 +2,34 @@ module Ckfapi
   module API
     # User API
     #
-    # Handling all User requests
-    class User < Ckfapi::API::Core
-      @root_endpoint = "#{Ckfapi.api_uri}/v1/users"
+    # Handling all Sale requests
+    class SaleItemMenu < Ckfapi::API::Core
+      @root_endpoint = "#{Ckfapi.api_uri}/v1/sale_item_menus"
 
-      # Create a user API
+      # Create a sale API
       #
-      # @param user [Hash] user data
+      # @param sale [Hash] sale data
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::User.create({email: "",phone: ""})
-      def self.create user,data_type="json"
+      #     Ckfapi::API::Sale.create({email: "",phone: ""})
+      def self.create sale,data_type="json"
         uri = "#{@root_endpoint}"
-        params = {:user => user}
+        params = {:sale_menu_item => sale_menu_item}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
-      # Index users
+      # Index sales
       #
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::User.index
+      #     Ckfapi::API::Sale.index
       def self.index data_type="json"
         uri = "#{@root_endpoint}"
         raw_resp = get_request(uri)

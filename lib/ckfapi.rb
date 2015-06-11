@@ -12,10 +12,10 @@ require "ckfapi/version"
 require "ckfapi/config"
 require 'ckfapi/url_helpers'
 require 'ckfapi/response'
-require 'ckfapi/filter'
 
 require "ckfapi/api"
 require "ckfapi/api/user"
+require "ckfapi/api/sale"
 
 
 module Ckfapi
