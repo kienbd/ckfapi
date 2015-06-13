@@ -101,6 +101,22 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
+      # Get Sale API
+      #
+      # @param sale [Hash] sale data
+      # @param data_type [String] the return type, `json` or `xml`
+      #
+      # @return [Response] return as Response object.
+      #
+      # @example
+      #     Ckfapi::API::Sale.sum(1,{detail: true })
+      def self.sum sale_id,options={},datatype="json"
+        uri = "#{@root_endpoint}/#{sale_id}/sum"
+        params = {:options => options}
+        raw_resp = get_request(uri,params)
+        resp = Response.new(raw_resp)
+      end
+
     end
   end
 end
