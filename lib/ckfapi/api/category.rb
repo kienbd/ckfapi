@@ -4,7 +4,9 @@ module Ckfapi
     #
     # Handling all Category requests
     class Category < Ckfapi::API::Core
-      @root_endpoint = "#{Ckfapi.api_uri}/v1/categories"
+      def root_endpoint
+        "#{Ckfapi.api_uri}/v1/categories"
+      end
 
       # Create a category API
       #
@@ -16,7 +18,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Category.create({name: "",description: ""})
       def self.create category,data_type="json"
-        uri = "#{@root_endpoint}"
+        uri = "#{root_endpoint}"
         params = {:category => category}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
@@ -31,7 +33,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Category.index({detail: true})
       def self.index options={},data_type="json"
-        uri = "#{@root_endpoint}"
+        uri = "#{root_endpoint}"
         params = {:options => options}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
@@ -47,7 +49,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Category.get(1,{detail: true })
       def self.get category_id,options={},data_type="json"
-        uri = "#{@root_endpoint}/#{category_id}"
+        uri = "#{root_endpoint}/#{category_id}"
         params = {:options => options}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
@@ -63,7 +65,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Category.add_menu_item(1, {name: "coca",description: "",unit: "p",unit_price: 5000.05})
       def self.add_menu_item category_id,menu_item,data_type="json"
-        uri = "#{@root_endpoint}/#{category_id}/menu_items"
+        uri = "#{root_endpoint}/#{category_id}/menu_items"
         params = {:menu_item => menu_item}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
@@ -79,7 +81,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Category.update(1,{name: ""})
       def self.update category_id,category,data_type="json"
-        uri = "#{@root_endpoint}/#{category_id}"
+        uri = "#{root_endpoint}/#{category_id}"
         params = {:category => category}
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
@@ -95,7 +97,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Category.remove(1)
       def self.remove category_id,options={},datatype="json"
-        uri = "#{@root_endpoint}/#{category_id}"
+        uri = "#{root_endpoint}/#{category_id}"
         params = {:options => options}
         raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)

@@ -4,7 +4,9 @@ module Ckfapi
     #
     # Handling all User requests
     class User < Ckfapi::API::Core
-      @root_endpoint = "#{Ckfapi.api_uri}/v1/users"
+      def root_endpoint
+        "#{Ckfapi.api_uri}/v1/users"
+      end
 
       # Create a user API
       #
@@ -16,7 +18,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::User.create({email: "",phone: ""})
       def self.create user,data_type="json"
-        uri = "#{@root_endpoint}"
+        uri = "#{root_endpoint}"
         params = {:user => user}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
@@ -31,7 +33,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::User.index
       def self.index data_type="json"
-        uri = "#{@root_endpoint}"
+        uri = "#{root_endpoint}"
         raw_resp = get_request(uri)
         resp = Response.new(raw_resp)
       end
