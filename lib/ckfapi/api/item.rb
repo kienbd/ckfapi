@@ -4,7 +4,8 @@ module Ckfapi
     #
     # Handling all Item requests
     class Item < Ckfapi::API::Core
-      def root_endpoint
+
+      def self.root_endpoint
         "#{Ckfapi.api_uri}/v1/items"
       end
 
