@@ -21,6 +21,7 @@ require "ckfapi/api/category"
 require "ckfapi/api/menu_item"
 require "ckfapi/api/item_menu_item"
 require "ckfapi/api/item"
+require "ckfapi/api/payment"
 
 
 module Ckfapi

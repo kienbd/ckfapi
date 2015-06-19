@@ -4,7 +4,7 @@ module Ckfapi
     #
     # Handling all SaleMenuItem requests
     class SaleMenuItem < Ckfapi::API::Core
-      def root_endpoint
+      def self.root_endpoint
         "#{Ckfapi.api_uri}/v1/sale_menu_items"
       end
 

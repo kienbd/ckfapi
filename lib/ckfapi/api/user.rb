@@ -4,7 +4,7 @@ module Ckfapi
     #
     # Handling all User requests
     class User < Ckfapi::API::Core
-      def root_endpoint
+      def self.root_endpoint
         "#{Ckfapi.api_uri}/v1/users"
       end
 

@@ -1,38 +1,37 @@
 module Ckfapi
   module API
-    # Item API
+    # Payment API
     #
-    # Handling all Item requests
-    class Item < Ckfapi::API::Core
-
+    # Handling all Payment requests
+    class Payment < Ckfapi::API::Core
       def self.root_endpoint
-        "#{Ckfapi.api_uri}/v1/items"
+        "#{Ckfapi.api_uri}/v1/payments"
       end
 
-      # Create a item API
+      # Create a payment API
       #
-      # @param item [Hash] item data
+      # @param payment [Hash] payment data
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::Item.create({name: "",description: "",tax: 0.05,unit: "",unit_price: 1000.05 })
-      def self.create item,data_type="json"
+      #     Ckfapi::API::Payment.create({payment_amount: "",payment_type: ""})
+      def self.create payment,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:item => item}
+        params = {:payment => payment}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
-      # Index items
+      # Index payments
       #
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::Item.index({detail: true})
+      #     Ckfapi::API::Payment.index
       def self.index options={},data_type="json"
         uri = "#{root_endpoint}"
         params = {:options => options}
@@ -40,51 +39,49 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
-      # Get Item API
+      # Get payment
       #
-      # @param item [Hash] item data
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::Item.get(1,{detail: true })
-      def self.get item_id,options={},data_type="json"
-        uri = "#{root_endpoint}/#{item_id}"
+      #     Ckfapi::API::Payment.get(1,{detail: true})
+      def self.get payment_id,options={},data_type="json"
+        uri = "#{root_endpoint}/#{payment_id}"
         params = {:options => options}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
-      # Update Item API
+      # Delete payment
       #
-      # @param item [Hash] item data
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::Item.update(1,{name: ""})
-      def self.update item_id,item,data_type="json"
-        uri = "#{root_endpoint}/#{item_id}"
-        params = {:item => item}
-        raw_resp = put_request(uri,params)
+      #     Ckfapi::API::Payment.remove(1,{detail: true})
+      def self.remove payment_id,options={},data_type="json"
+        uri = "#{root_endpoint}/#{payment_id}"
+        params = {:options => options}
+        raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
-      # Delete Item API
+
+      # Update payment
       #
-      # @param item [Hash] item data
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
-      #     Ckfapi::API::Item.remove(1)
-      def self.remove item_id,options={},datatype="json"
-        uri = "#{root_endpoint}/#{item_id}"
-        params = {:options => options}
-        raw_resp = delete_request(uri,params)
+      #     Ckfapi::API::Payment.update(1,{name: hola})
+      def self.update payment_id,payment,data_type="json"
+        uri = "#{root_endpoint}/#{payment_id}"
+        params = {:payment => payment}
+        raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
