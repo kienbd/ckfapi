@@ -122,6 +122,7 @@ module Ckfapi
 
       def self.next_state sale_id,data_type="json"
         uri = "#{root_endpoint}/#{sale_id}/state"
+        params = {}
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
