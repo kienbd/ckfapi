@@ -18,9 +18,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.create({email: "",phone: ""})
-      def self.create sale,data_type="json"
+      def self.create token,sale,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:sale => sale}
+        params = {:sale => sale,:token => token}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -33,9 +33,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.index({detail: true})
-      def self.index options={},data_type="json"
+      def self.index token,options={},data_type="json"
         uri = "#{root_endpoint}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -49,9 +49,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.get(1,{detail: true })
-      def self.get sale_id,options={},data_type="json"
+      def self.get token,sale_id,options={},data_type="json"
         uri = "#{root_endpoint}/#{sale_id}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -65,9 +65,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.create({email: "",phone: ""})
-      def self.add_sale_menu_item sale_id,sale_menu_item,data_type="json"
+      def self.add_sale_menu_item token,sale_id,sale_menu_item,data_type="json"
         uri = "#{root_endpoint}/#{sale_id}/sale_menu_items"
-        params = {:sale_menu_item => sale_menu_item}
+        params = {:sale_menu_item => sale_menu_item,:token => token}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -81,9 +81,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.update(1,{name: ""})
-      def self.update sale_id,sale,data_type="json"
+      def self.update token,sale_id,sale,data_type="json"
         uri = "#{root_endpoint}/#{sale_id}"
-        params = {:sale => sale}
+        params = {:sale => sale,:token => token}
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -97,9 +97,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.remove(1)
-      def self.remove sale_id,options={},datatype="json"
+      def self.remove token,sale_id,options={},datatype="json"
         uri = "#{root_endpoint}/#{sale_id}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -113,16 +113,16 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Sale.sum(1,{detail: true })
-      def self.sum sale_id,options={},datatype="json"
+      def self.sum token,sale_id,options={},datatype="json"
         uri = "#{root_endpoint}/#{sale_id}/sum"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
-      def self.next_state sale_id,data_type="json"
+      def self.next_state token,sale_id,data_type="json"
         uri = "#{root_endpoint}/#{sale_id}/state"
-        params = {}
+        params = {:token => token}
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
