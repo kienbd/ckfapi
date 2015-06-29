@@ -10,6 +10,11 @@ module Ckfapi
         #end
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri, {'Content-Type' =>'application/json'})
+        if args[:token]
+          req.add_field("X-API-EMAIL", args[:token]["user"]["email"])
+          req.add_field("X-API-TOKEN", args[:token]["user"]["authentication_token"])
+          args.delete(:token)
+        end
         req.body = args.to_json
         resp = http.request(req)
 
@@ -23,6 +28,11 @@ module Ckfapi
         uri = URI.parse(url)
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Post.new(uri, {'Content-Type' =>'application/json'})
+        if args[:token]
+          req.add_field("X-API-EMAIL", args[:token]["user"]["email"])
+          req.add_field("X-API-TOKEN", args[:token]["user"]["authentication_token"])
+          args.delete(:token)
+        end
         req.body = args.to_json
         resp = http.request(req)
       rescue => e
@@ -35,6 +45,11 @@ module Ckfapi
         uri = URI.parse(url)
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Put.new(uri, {'Content-Type' =>'application/json'})
+        if args[:token]
+          req.add_field("X-API-EMAIL", args[:token]["user"]["email"])
+          req.add_field("X-API-TOKEN", args[:token]["user"]["authentication_token"])
+          args.delete(:token)
+        end
         req.body = args.to_json
         resp = http.request(req)
       rescue => e
@@ -47,6 +62,11 @@ module Ckfapi
         uri = URI.parse(url)
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Delete.new(uri, {'Content-Type' =>'application/json'})
+        if args[:token]
+          req.add_field("X-API-EMAIL", args[:token]["user"]["email"])
+          req.add_field("X-API-TOKEN", args[:token]["user"]["authentication_token"])
+          args.delete(:token)
+        end
         req.body = args.to_json
         resp = http.request(req)
       rescue => e

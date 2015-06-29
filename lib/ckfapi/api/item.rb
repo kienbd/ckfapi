@@ -18,9 +18,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Item.create({name: "",description: "",tax: 0.05,unit: "",unit_price: 1000.05 })
-      def self.create item,data_type="json"
+      def self.create token,item,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:item => item}
+        params = {:item => item,:token => token}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -33,9 +33,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Item.index({detail: true})
-      def self.index options={},data_type="json"
+      def self.index token,options={},data_type="json"
         uri = "#{root_endpoint}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -49,9 +49,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Item.get(1,{detail: true })
-      def self.get item_id,options={},data_type="json"
+      def self.get token,item_id,options={},data_type="json"
         uri = "#{root_endpoint}/#{item_id}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -65,9 +65,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Item.update(1,{name: ""})
-      def self.update item_id,item,data_type="json"
+      def self.update token,item_id,item,data_type="json"
         uri = "#{root_endpoint}/#{item_id}"
-        params = {:item => item}
+        params = {:item => item,:token => token}
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -81,9 +81,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Item.remove(1)
-      def self.remove item_id,options={},datatype="json"
+      def self.remove token,item_id,options={},datatype="json"
         uri = "#{root_endpoint}/#{item_id}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)
       end

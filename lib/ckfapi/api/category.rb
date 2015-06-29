@@ -17,9 +17,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Category.create({name: "",description: ""})
-      def self.create category,data_type="json"
+      def self.create token,category,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:category => category}
+        params = {:category => category,:token => token}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -32,9 +32,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Category.index({detail: true})
-      def self.index options={},data_type="json"
+      def self.index token,options={},data_type="json"
         uri = "#{root_endpoint}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -48,9 +48,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Category.get(1,{detail: true })
-      def self.get category_id,options={},data_type="json"
+      def self.get token,category_id,options={},data_type="json"
         uri = "#{root_endpoint}/#{category_id}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -64,9 +64,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Category.add_menu_item(1, {name: "coca",description: "",unit: "p",unit_price: 5000.05})
-      def self.add_menu_item category_id,menu_item,data_type="json"
+      def self.add_menu_item token,category_id,menu_item,data_type="json"
         uri = "#{root_endpoint}/#{category_id}/menu_items"
-        params = {:menu_item => menu_item}
+        params = {:menu_item => menu_item,:token => token}
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -80,9 +80,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Category.update(1,{name: ""})
-      def self.update category_id,category,data_type="json"
+      def self.update token,category_id,category,data_type="json"
         uri = "#{root_endpoint}/#{category_id}"
-        params = {:category => category}
+        params = {:category => category,:token => token}
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -96,9 +96,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::Category.remove(1)
-      def self.remove category_id,options={},datatype="json"
+      def self.remove token,category_id,options={},datatype="json"
         uri = "#{root_endpoint}/#{category_id}"
-        params = {:options => options}
+        params = {:options => options,:token => token}
         raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)
       end
