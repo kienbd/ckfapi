@@ -34,7 +34,7 @@ module Ckfapi
       #     Ckfapi::API::User.index
       def self.index token,filter={},data_type="json"
         uri = "#{root_endpoint}"
-        params = {:filter => filter, :token => token}
+        params = {:filter => filter}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -50,7 +50,7 @@ module Ckfapi
       #     Ckfapi::API::User.get(1)
       def self.get token,sale_id,data_type="json"
         uri = "#{root_endpoint}/#{sale_id}"
-        params = {:token => token}
+        params = {}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end

@@ -19,7 +19,7 @@ module Ckfapi
       #     Ckfapi::API::ItemMenuItem.create({name: "",description: ""})
       def self.create token,item_menu_item,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:item_menu_item => item_menu_item,:token => token}
+        params = {:item_menu_item => item_menu_item}.merge(token)
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -34,7 +34,7 @@ module Ckfapi
       #     Ckfapi::API::ItemMenuItem.index
       def self.index token,options={},data_type="json"
         uri = "#{root_endpoint}"
-        params = {:options => options,:token => token}
+        params = {:options => options}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -49,7 +49,7 @@ module Ckfapi
       #     Ckfapi::API::ItemMenuItem.get(1,{detail: true})
       def self.get token,item_menu_item_id,options={},data_type="json"
         uri = "#{root_endpoint}/#{item_menu_item_id}"
-        params = {:options => options,:token => token}
+        params = {:options => options}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -64,7 +64,7 @@ module Ckfapi
       #     Ckfapi::API::ItemMenuItem.remove(1,{})
       def self.remove token,item_menu_item_id,options={},data_type="json"
         uri = "#{root_endpoint}/#{item_menu_item_id}"
-        params = {:options => options,:token => token}
+        params = {:options => options}.merge(token)
         raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -80,7 +80,7 @@ module Ckfapi
       #     Ckfapi::API::ItemMenuItem.update(1,{name: hola})
       def self.update token,item_menu_item_id,item_menu_item,data_type="json"
         uri = "#{root_endpoint}/#{item_menu_item_id}"
-        params = {:item_menu_item => item_menu_item,:token => token}
+        params = {:item_menu_item => item_menu_item}.merge(token)
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end

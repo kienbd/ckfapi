@@ -19,7 +19,7 @@ module Ckfapi
       #     Ckfapi::API::MenuItem.create({name: "",description: "",unit: "", unit_price: 10.05})
       def self.create token,menu_item,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:menu_item => menu_item,:token => token}
+        params = {:menu_item => menu_item}.merge(token)
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -34,7 +34,7 @@ module Ckfapi
       #     Ckfapi::API::MenuItem.index({detail: true})
       def self.index token,options={},data_type="json"
         uri = "#{root_endpoint}"
-        params = {:options => options,:token => token}
+        params = {:options => options}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -50,7 +50,7 @@ module Ckfapi
       #     Ckfapi::API::MenuItem.get(1,{detail: true })
       def self.get token,menu_item_id,options={},data_type="json"
         uri = "#{root_endpoint}/#{menu_item_id}"
-        params = {:options => options,:token => token}
+        params = {:options => options}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -66,7 +66,7 @@ module Ckfapi
       #     Ckfapi::API::MenuItem.add_item_menu_item(1,{email: "",phone: ""})
       def self.add_item_menu_item token,menu_item_id,item_menu_item,data_type="json"
         uri = "#{root_endpoint}/#{menu_item_id}/item_menu_items"
-        params = {:item_menu_item => item_menu_item,:token => token}
+        params = {:item_menu_item => item_menu_item}.merge(token)
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -82,7 +82,7 @@ module Ckfapi
       #     Ckfapi::API::MenuItem.update(1,{name: ""})
       def self.update token,menu_item_id,menu_item,data_type="json"
         uri = "#{root_endpoint}/#{menu_item_id}"
-        params = {:menu_item => menu_item,:token => token}
+        params = {:menu_item => menu_item}.merge(token)
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -98,7 +98,7 @@ module Ckfapi
       #     Ckfapi::API::MenuItem.remove(1)
       def self.remove token,menu_item_id,options={},datatype="json"
         uri = "#{root_endpoint}/#{menu_item_id}"
-        params = {:options => options,:token => token}
+        params = {:options => options}.merge(token)
         raw_resp = delete_request(uri,params)
         resp = Response.new(raw_resp)
       end
