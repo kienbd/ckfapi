@@ -17,9 +17,9 @@ module Ckfapi
       #
       # @example
       #     Ckfapi::API::User.create({email: "",phone: ""})
-      def self.create user,data_type="json"
+      def self.create token,user,data_type="json"
         uri = "#{root_endpoint}"
-        params = {:user => user}
+        params = {:user => user}.merge(token)
         raw_resp = post_request(uri,params)
         resp = Response.new(raw_resp)
       end
@@ -41,15 +41,15 @@ module Ckfapi
 
       # Get User API
       #
-      # @param sale [Hash] sale data
+      # @param user [Hash] user data
       # @param data_type [String] the return type, `json` or `xml`
       #
       # @return [Response] return as Response object.
       #
       # @example
       #     Ckfapi::API::User.get(1)
-      def self.get token,sale_id,data_type="json"
-        uri = "#{root_endpoint}/#{sale_id}"
+      def self.get token,user_id,data_type="json"
+        uri = "#{root_endpoint}/#{user_id}"
         params = {}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
