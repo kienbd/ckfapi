@@ -24,6 +24,22 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
+      # Update User API
+      #
+      # @param user [Hash] user data
+      # @param data_type [String] the return type, `json` or `xml`
+      #
+      # @return [Response] return as Response object.
+      #
+      # @example
+      #     Ckfapi::API::User.update(1,{name: ""})
+      def self.update token,user_id,user,data_type="json"
+        uri = "#{root_endpoint}/#{user_id}"
+        params = {:user => user}.merge(token)
+        raw_resp = put_request(uri,params)
+        resp = Response.new(raw_resp)
+      end
+
       # Index users
       #
       # @param data_type [String] the return type, `json` or `xml`
