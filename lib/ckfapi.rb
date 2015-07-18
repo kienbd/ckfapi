@@ -22,6 +22,8 @@ require "ckfapi/api/menu_item"
 require "ckfapi/api/item_menu_item"
 require "ckfapi/api/item"
 require "ckfapi/api/payment"
+require "ckfapi/api/shift"
+require "ckfapi/api/attendance"
 
 
 module Ckfapi
