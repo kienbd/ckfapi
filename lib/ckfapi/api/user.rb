@@ -24,6 +24,22 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
+      # Create a user API
+      #
+      # @param user [Hash] user data
+      # @param data_type [String] the return type, `json` or `xml`
+      #
+      # @return [Response] return as Response object.
+      #
+      # @example
+      #     Ckfapi::API::User.create({email: "",phone: ""})
+      def self.auth token,data_type="json"
+        uri = "#{root_endpoint}/auth"
+        params = {}.merge(token)
+        raw_resp = get_request(uri,params)
+        resp = Response.new(raw_resp)
+      end
+
       # Update User API
       #
       # @param user [Hash] user data
