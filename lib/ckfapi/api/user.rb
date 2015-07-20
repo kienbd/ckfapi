@@ -87,6 +87,22 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
+      # Delete User API
+      #
+      # @param user [Hash] user data
+      # @param data_type [String] the return type, `json` or `xml`
+      #
+      # @return [Response] return as Response object.
+      #
+      # @example
+      #     Ckfapi::API::user.remove(1)
+      def self.remove token,user_id,options={},datatype="json"
+        uri = "#{root_endpoint}/#{user_id}"
+        params = {:options => options}.merge(token)
+        raw_resp = delete_request(uri,params)
+        resp = Response.new(raw_resp)
+      end
+
       # Get Token
       #
       # @param data_type [String] the return type, `json` or `xml`
