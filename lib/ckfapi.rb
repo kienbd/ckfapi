@@ -24,6 +24,7 @@ require "ckfapi/api/item"
 require "ckfapi/api/payment"
 require "ckfapi/api/shift"
 require "ckfapi/api/attendance"
+require "ckfapi/api/report"
 
 
 module Ckfapi

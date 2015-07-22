@@ -92,6 +92,13 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
+      def self.redo token,sale_menu_item_id,message="",data_type="json"
+        uri = "#{root_endpoint}/#{sale_menu_item_id}/redo"
+        params = {message: message}.merge(token)
+        raw_resp = put_request(uri,params)
+        resp = Response.new(raw_resp)
+      end
+
     end
   end
 end
