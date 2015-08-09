@@ -94,7 +94,7 @@ module Ckfapi
       # @example
       #     Ckfapi::API::Shift.stat(1, type, {year: 2015, month: 12, day: 1})
       def self.stat token,shift_id,type,date,data_type="json"
-        uri = "#{root_endpoint}/#{shift_id}/stat/#{type}"
+        uri = "#{root_endpoint}/stat/#{type}"
         params = {:date => date}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
