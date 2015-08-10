@@ -127,8 +127,9 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
-      def self.toggle_get_paid data_type="json"
+      def self.toggle_get_paid token,sale_id,data_type="json"
         uri = "#{root_endpoint}/#{sale_id}/get_paid"
+        params = {}.merge(token)
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
