@@ -1,4 +1,4 @@
 module Ckfapi
-  VERSION = "0.7.0"
+  VERSION = "0.8.1"
 end
 

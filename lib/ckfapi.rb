@@ -25,6 +25,7 @@ require "ckfapi/api/payment"
 require "ckfapi/api/shift"
 require "ckfapi/api/attendance"
 require "ckfapi/api/report"
+require "ckfapi/api/freeze_time"
 
 
 module Ckfapi
