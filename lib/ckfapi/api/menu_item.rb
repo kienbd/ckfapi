@@ -103,6 +103,13 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
+      def self.batch_update_mtype token, old_mtype, new_mtype, options={}, datatype="json"
+        uri = "#{root_endpoint}/batch_update_mtype"
+        params = {:old_mtype => old_mtype, :new_mtype => new_mtype}.merge(token)
+        raw_resp = put_request(uri,params)
+        resp = Response.new(raw_resp)
+      end
+
     end
   end
 end
