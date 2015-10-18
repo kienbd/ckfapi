@@ -85,7 +85,7 @@ module Ckfapi
       end
 
       def self.verify_freeze token,options={},data_type="json"
-        uri = "#{root_endpoint}"
+        uri = "#{root_endpoint}/verify_freeze"
         params = {:options => options}.merge(token)
         raw_resp = get_request(uri,params)
         resp = Response.new(raw_resp)
