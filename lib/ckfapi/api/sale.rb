@@ -120,20 +120,26 @@ module Ckfapi
         resp = Response.new(raw_resp)
       end
 
-      def self.next_state token,sale_id,data_type="json"
+      def self.next_state token,sale_id,datatype="json"
         uri = "#{root_endpoint}/#{sale_id}/state"
         params = {}.merge(token)
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
-      def self.toggle_get_paid token,sale_id,data_type="json"
+      def self.toggle_get_paid token,sale_id,datatype="json"
         uri = "#{root_endpoint}/#{sale_id}/get_paid"
         params = {}.merge(token)
         raw_resp = put_request(uri,params)
         resp = Response.new(raw_resp)
       end
 
+			def self.sum_in_time token,option={},datatype="json"
+        uri = "#{root_endpoint}/sum_in_time"
+        params = {:options => options}.merge(token)
+        raw_resp = get_request(uri,params)
+        resp = Response.new(raw_resp)
+			end
     end
   end
 end
